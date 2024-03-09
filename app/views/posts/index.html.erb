@@ -3,6 +3,12 @@
     <div class="col-3">
       <h4>
         <!-- TODO: display the name of the user that created the post -->
+        <% if post["user_id"]%>
+            <% user = @users.find_by({ "id" => post["user_id"] }) %>
+            <%=user["first_name"] %>
+          <% else %>
+            Anonymous
+        <% end %>
       </h4>
       <img class="img-fluid" src="<%= post["image"] %>" class="w-full">
       <p><%= post["body"] %></p>
